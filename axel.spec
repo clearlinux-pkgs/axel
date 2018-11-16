@@ -4,16 +4,16 @@
 #
 Name     : axel
 Version  : 2.16.1
-Release  : 2
+Release  : 3
 URL      : https://github.com/axel-download-accelerator/axel/releases/download/v2.16.1/axel-2.16.1.tar.xz
 Source0  : https://github.com/axel-download-accelerator/axel/releases/download/v2.16.1/axel-2.16.1.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: axel-bin
-Requires: axel-license
-Requires: axel-locales
-Requires: axel-man
+Requires: axel-bin = %{version}-%{release}
+Requires: axel-license = %{version}-%{release}
+Requires: axel-locales = %{version}-%{release}
+Requires: axel-man = %{version}-%{release}
 BuildRequires : pkgconfig(openssl)
 
 %description
@@ -30,8 +30,8 @@ BuildRequires : pkgconfig(openssl)
 %package bin
 Summary: bin components for the axel package.
 Group: Binaries
-Requires: axel-license
-Requires: axel-man
+Requires: axel-license = %{version}-%{release}
+Requires: axel-man = %{version}-%{release}
 
 %description bin
 bin components for the axel package.
@@ -69,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533091374
+export SOURCE_DATE_EPOCH=1542383792
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -81,10 +81,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1533091374
+export SOURCE_DATE_EPOCH=1542383792
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/axel
-cp COPYING %{buildroot}/usr/share/doc/axel/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/axel
+cp COPYING %{buildroot}/usr/share/package-licenses/axel/COPYING
 %make_install
 %find_lang axel
 
@@ -96,11 +96,11 @@ cp COPYING %{buildroot}/usr/share/doc/axel/COPYING
 /usr/bin/axel
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/axel/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/axel/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/axel.1
 
 %files locales -f axel.lang
