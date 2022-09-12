@@ -4,7 +4,7 @@
 #
 Name     : axel
 Version  : 2.17.11
-Release  : 8
+Release  : 9
 URL      : https://github.com/axel-download-accelerator/axel/releases/download/v2.17.11/axel-2.17.11.tar.xz
 Source0  : https://github.com/axel-download-accelerator/axel/releases/download/v2.17.11/axel-2.17.11.tar.xz
 Summary  : No detailed summary available
